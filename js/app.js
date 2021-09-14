@@ -13,25 +13,27 @@ const showProducts = (products) => {
     // console.log(product.rating.count);
     const image = product.image;
     const div = document.createElement("div");
+    // adding col class to the div
     div.classList.add("col");
-    div.innerHTML = `
-    	<div class="card h-100 shadow-sm">
-      		<img class="img-fluid w-75 mx-auto mt-3" src=${image}></img> 
+    div.innerHTML = 
+    `<div class="card h-100 shadow-sm px-2">
+      		<img class="img-fluid mx-auto my-3 product-image" src=${image}></img> 
       		<div class="card-body">
-        		<h5 class="card-title">${product.title}</h5>
+        		<h6 class="card-title fw-bold">${product.title}</h6>
         		<p>
-          			<span><i class="fas fa-star text-warning"></i> ${product.rating.rate}<span>
-          			<span class="text-secondary"> - ${product.rating.count} Ratings</span>
+          			<span><i class="fas fa-star"></i> ${product.rating.rate}<span>
+          			<span class="text-secondary">(${product.rating.count} Ratings)</span>
         		</p>
-        		<p class="card-text">Category: ${product.category}</p>
-        		<h2>Price: $ ${product.price}</h2>
+        		<p class="card-text text-danger category-text">
+                            <span class="text-secondary fw-normal">Category: </span>${product.category}
+                     </p>
+        		<h4 class="fw-bold">$ ${product.price}</h4>
       		</div>
-      		<div class="card-footer bg-white d-grid gap-2 d-md-flex justify-content-center">
-        		<button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        		<button id="details-btn" class="btn btn-danger">Details</button></div>
+      		<div class="card-footer d-grid gap-2 border-0 pb-3">
+        		<button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-outline-dark">Add to cart</button>
+        		<button id="details-btn" class="btn btn-dark">Details</button></div>
       		</div>
-		  </div>
-      `;
+	</div>`;
     document.getElementById("all-products").appendChild(div);
   }
 };
